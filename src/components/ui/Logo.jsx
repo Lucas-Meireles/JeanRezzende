@@ -1,0 +1,1 @@
+export function Logo() { return <a className="brand" href="/"><img className="brand__dark" src="/brand/logo-dark.svg" alt="Jean Rezende & Rodrigo"/><img className="brand__light" src="/brand/logo-light.svg" alt="Jean Rezende & Rodrigo"/></a>; }

@@ -1,0 +1,2 @@
+import { Reveal } from '../../components/motion/Reveal';
+export default function GenericManager({ title = 'Módulo de gestão', eyebrow = 'GESTÃO' }) { return <div className="manager-page"><Reveal><span className="eyebrow">{eyebrow}</span><h1>{title}</h1><p className="page-lead">Área separada e pronta para receber dados reais.</p></Reveal><Reveal className="panel empty-module"><div className="empty-module__icon">JR</div><h2>Controle organizado.</h2><p>Esta camada será conectada ao backend quando a persistência real entrar.</p></Reveal></div>; }
