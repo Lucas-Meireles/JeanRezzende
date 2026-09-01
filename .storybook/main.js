@@ -1,1 +1,0 @@
-import {defineConfig} from '@storybook/react-vite';export default defineConfig({stories:['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],addons:[],framework:'@storybook/react-vite'});
