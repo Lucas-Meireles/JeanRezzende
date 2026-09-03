@@ -8,7 +8,7 @@ import { useAppStore } from '../../store/useAppStore';
 const links = [
   ['O show', '#show'],
   ['Nossa história', '#historia'],
-  ['Agenda', '#agenda'],
+  // ['Agenda', '#agenda'],
   ['Ao vivo', '#ao-vivo'],
   ['Repertório', '#repertorio'],
 ];
@@ -77,15 +77,16 @@ export function PublicHeader() {
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           aria-label="Alternar tema"
         >
-          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          {theme === 'dark' ? <Sun key="sun" size={18} className="icon-pop" /> : <Moon key="moon" size={18} className="icon-pop" />}
         </button>
 
         <button
           className="icon-button menu-button"
           onClick={() => setOpen(!open)}
           aria-label="Menu"
+          aria-expanded={open}
         >
-          {open ? <X size={21} /> : <Menu size={21} />}
+          {open ? <X key="close" size={21} className="icon-pop" /> : <Menu key="open" size={21} className="icon-pop" />}
         </button>
       </div>
     </header>

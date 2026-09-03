@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Bot, LoaderCircle, Send, Sparkles, X } from 'lucide-react';
+import { BotMessageSquare, LoaderCircle, SendHorizontal, Sparkles, X } from 'lucide-react';
 
 const welcome = {
   role: 'assistant',
@@ -73,14 +73,14 @@ export function ChatbotFloat() {
               </div>
             </div>
             <button type="button" className="chatbot-close" onClick={() => setOpen(false)} aria-label="Fechar assistente">
-              <X size={18} />
+              <X size={18} className="icon-pop" />
             </button>
           </header>
 
           <div className="chatbot-messages">
             {messages.map((item, index) => (
               <div key={`${item.role}-${index}`} className={`chatbot-message chatbot-message--${item.role}`}>
-                {item.role === 'assistant' && <Bot size={15} />}
+                {item.role === 'assistant' && <BotMessageSquare size={15} />}
                 <span>{item.content}</span>
               </div>
             ))}
@@ -95,14 +95,14 @@ export function ChatbotFloat() {
           <form className="chatbot-form" onSubmit={sendMessage}>
             <input value={input} onChange={(event) => setInput(event.target.value)} placeholder="Escreva sua pergunta..." aria-label="Mensagem" />
             <button type="submit" aria-label="Enviar mensagem" disabled={loading || !input.trim()}>
-              <Send size={16} />
+              <SendHorizontal size={16} />
             </button>
           </form>
         </section>
       )}
 
       <button type="button" className="chatbot-orb" onClick={() => setOpen((value) => !value)} aria-label={open ? 'Fechar assistente' : 'Abrir assistente'}>
-        {open ? <X size={21} /> : <Bot size={22} />}
+        {open ? <X key="close" size={21} className="icon-pop" /> : <BotMessageSquare key="open" size={22} className="icon-pop" />}
       </button>
     </div>
   );

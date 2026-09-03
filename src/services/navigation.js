@@ -4,13 +4,22 @@ const easeInOutCubic = (progress) => {
     : 1 - Math.pow(-2 * progress + 2, 3) / 2;
 };
 
-export function smoothScrollToId(id, duration = 1800) {
+// Tracks the currently running scroll animation so a new click can cancel
+// it cleanly instead of fighting the previous frame loop (that fight is
+// what used to look like an instant "teleport" when links were clicked
+// in quick succession).
+let activeScrollToken = 0;
+
+export function smoothScrollToId(id, duration = 1400) {
   const targetId = id.replace('#', '');
   const target = document.getElementById(targetId);
 
   if (!target) {
     return;
   }
+
+  const token = ++activeScrollToken;
+  const root = document.documentElement;
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     target.scrollIntoView({ behavior: 'auto', block: 'start' });
@@ -29,12 +38,17 @@ export function smoothScrollToId(id, duration = 1800) {
   );
   const distance = destination - start;
   const startTime = performance.now();
-  const root = document.documentElement;
   const previousScrollBehavior = root.style.scrollBehavior;
 
   root.style.scrollBehavior = 'auto';
 
   const frame = (currentTime) => {
+    // A newer scroll request took over — stop this loop immediately so
+    // the two animations never fight over window.scrollTo at once.
+    if (token !== activeScrollToken) {
+      return;
+    }
+
     const progress = Math.min(
       (currentTime - startTime) / duration,
       1,
