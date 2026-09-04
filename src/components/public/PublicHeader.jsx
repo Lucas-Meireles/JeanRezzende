@@ -68,7 +68,9 @@ export function PublicHeader() {
           );
         })}
 
-        <LiquidButton href="#contrate">Contratar</LiquidButton>
+        <LiquidButton href="https://wa.me/5511939397691">
+          Contratar
+        </LiquidButton>
       </nav>
 
       <div className="header-actions">

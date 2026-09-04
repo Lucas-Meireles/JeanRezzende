@@ -7,7 +7,7 @@ export function WhatsAppFloat() {
   return (
     <a
       className="whatsapp-float"
-      href={`https://wa.me/${whatsapp}`}
+      href="https://wa.me/5511939397691?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20dupla."
       target="_blank"
       rel="noreferrer"
       aria-label="Falar pelo WhatsApp"

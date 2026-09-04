@@ -68,9 +68,9 @@ function Hero() {
         </p>
 
         <div className="hero__actions">
-          <LiquidButton href="#contrate">
-            Contratar a dupla
-          </LiquidButton>
+          <LiquidButton href="https://wa.me/5511939397691">
+          Contratar a dupla
+        </LiquidButton>
 
           <a className="text-link" href="#ao-vivo">
             <Play size={17} />
